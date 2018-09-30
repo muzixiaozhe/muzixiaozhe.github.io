@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>image · 哲&#39;s HeroicCollege</title>
+    <title>对比SQL和NOSQL · 哲&#39;s HeroicCollege</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -227,7 +227,7 @@
                 <a href="/" >哲&#39;s HeroicCollege.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">image</a>
+                <a href="#" class="post-name">对比SQL和NOSQL</a>
             </div>
     </div>
     
@@ -257,7 +257,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            image
+            对比SQL和NOSQL
             <!-- 404 -->
             
         </h1>
@@ -274,14 +274,20 @@ height:50vh;
             <div class="post-intros">
                 <!-- 文章页标签  -->
                 
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "sql">sql</a>
+    
+</div>
+                
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">4</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1,732</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/08/27</span>
+                    <span class="post-intro-time">2018/09/30</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -405,9 +411,63 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>图片测试</p>
-<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/999.jpg" alt="   "></p>
-<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/XXX.jpg" alt="   "></p>
+        <h2 id="关系型数据库-SQL"><a href="#关系型数据库-SQL" class="headerlink" title="关系型数据库(SQL)"></a>关系型数据库(SQL)</h2><h3 id="常见的关系型数据库"><a href="#常见的关系型数据库" class="headerlink" title="常见的关系型数据库:"></a>常见的关系型数据库:</h3><p>mysql,oracle</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h3><p>数据合数据之间,表和字段之间,表和表之间是存在关系的</p>
+<p>简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>1、数据之间有关系 ,容易理解,在进行数据增删改查时非常方便</p>
+<p>2、通用的SQL语言使得操作关系型数据库非常方便</p>
+<p>3、关系型数据库有事物操作 ,保证了数据的完整性</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>1、固定的表结构 </p>
+<p>2、数据和数据之间有关系 , 关系是由底层大量算法保证</p>
+<p>比如 select * from student 每次都执行大量算法,会消耗系统资源 ,拉低系统运行速度</p>
+<p>3、关系型数据库在面对海量数据的增删改查时会显得无能为力,很可能宕机</p>
+<p>4、海量数据环境下数据表难以维护</p>
+<h4 id="适合处理一般量级数据"><a href="#适合处理一般量级数据" class="headerlink" title="适合处理一般量级数据"></a>适合处理一般量级数据</h4><h2 id="非关系型数据库-NoSQL"><a href="#非关系型数据库-NoSQL" class="headerlink" title="非关系型数据库(NoSQL)"></a>非关系型数据库(NoSQL)</h2><p>Nosql并不是没有sql的意思 而是Not Only SQL 不仅仅是sql</p>
+<p>非关系型数据库设计之初是为了替代关系型数据库</p>
+<h3 id="NoSQL数据库一般分为四大类"><a href="#NoSQL数据库一般分为四大类" class="headerlink" title="NoSQL数据库一般分为四大类"></a>NoSQL数据库一般分为四大类</h3><h4 id="键值-Key-Value-存储数据库"><a href="#键值-Key-Value-存储数据库" class="headerlink" title="键值(Key-Value)存储数据库"></a>键值(Key-Value)存储数据库</h4><p><strong>相关产品:</strong>Tokyo Cabinet/Tyrant, Redis ,Voldemort, Berkeley DB</p>
+<p><strong>典型应用:</strong>内容缓存,主要用于处理大量数据的高访问负载.</p>
+<p><strong>数据模型:</strong>一系列键值对</p>
+<p><strong>优势:</strong>优秀的快速查询,稳定性强</p>
+<p><strong>劣势:</strong>存储的数据缺少结构化</p>
+<h3 id="列存储数据库"><a href="#列存储数据库" class="headerlink" title="列存储数据库"></a>列存储数据库</h3><p><strong>相关产品:</strong>Cassandra,HBase,Riak</p>
+<p><strong>典型应用:</strong>分布式的文件系统</p>
+<p><strong>数据模型:</strong>以列簇式存储,将同一列数据存在一起</p>
+<p><strong>优势:</strong>查找速递快,可扩展性强,更容易进行分布式扩展</p>
+<p><strong>劣势:</strong>功能相对局限,使用极大的内存才可调配,且系统处理算法时将有数秒甚至更长时间的不可用,导致大量处理超时</p>
+<h3 id="文档型数据库"><a href="#文档型数据库" class="headerlink" title="文档型数据库"></a>文档型数据库</h3><p><strong>相关产品:</strong>MongoDB,CouchDB</p>
+<p><strong>典型应用:</strong>Web应用(于Key-Value类似,Value是结构化的)</p>
+<p><strong>数据模型:</strong>一系列键值对</p>
+<p><strong>优势:</strong>数据结构要求不严格</p>
+<p><strong>劣势:</strong>查询性能不高,而且缺乏统一的查询语法</p>
+<h3 id="图形-Graph-数据库"><a href="#图形-Graph-数据库" class="headerlink" title="图形(Graph)数据库"></a>图形(Graph)数据库</h3><p><strong>相关数据库:</strong>Neo4j,InfoGrid,Infinite Graph</p>
+<p><strong>典型应用:</strong>社交网络[关系网]</p>
+<p><strong>数据模型:</strong>图结构</p>
+<p><strong>优势:</strong>利用图结构相关算法</p>
+<p><strong>劣势:</strong>需要对整个图做计算才能得出结果,不容易做分布式的集群方案.局限性过强</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h3><p>1、无需经过sql层的解析，读写性能很高</p>
+<p>2、海量数据的增删改查非常轻松</p>
+<p>3、容易维护</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点:"></a>缺点:</h3><p>1、数据和数据之间没有关系,所以不能一目了然</p>
+<p>2、没有强大的事物保证数据的完整性 </p>
+<h4 id="适合处理海量数据-效率高-但不一定安全"><a href="#适合处理海量数据-效率高-但不一定安全" class="headerlink" title="适合处理海量数据,效率高,但不一定安全"></a>适合处理海量数据,效率高,但不一定安全</h4><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a><strong>存储方式</strong></h3><p>SQL数据存在特定结构的表中；而NoSQL则更加灵活和可扩展，存储方式可以省是JSON文档、哈希表或者其他方式。</p>
+<h3 id="表-数据集合的数据的关系"><a href="#表-数据集合的数据的关系" class="headerlink" title="表/数据集合的数据的关系"></a><strong>表/数据集合的数据的关系</strong></h3><p>在SQL中，必须定义好表和字段结构后才能添加数据，例如定义表的主键(primary key)，索引(index),触发器(trigger),存储过程(stored procedure)等。表结构可以在被定义之后更新，但是如果有比较大的结构变更的话就会变得比较复杂。在NoSQL中，数据可以在任何时候任何地方添加，不需要先定义表。</p>
+<p>NoSQL也可以在数据集中建立索引。以MongoDB为例，会自动在数据集合创建后创建唯一值_id字段，这样的话就可以在数据集创建后增加索引。从这点来看，NoSQL可能更加适合初始化数据还不明确或者未定的项目中。</p>
+<h3 id="外部数据存储"><a href="#外部数据存储" class="headerlink" title="外部数据存储"></a><strong>外部数据存储</strong></h3><p>SQL中如何需要增加外部关联数据的话，规范化做法是在原表中增加一个外键，关联外部数据表。</p>
+<p>在NoSQL中除了规范化的外部数据表做法以外，还能用非规范化方式把外部数据直接放到原数据集中，以提高查询效率。缺点也比较明显，更新数据的时候将会比较麻烦。</p>
+<h3 id="SQL中的JOIN查询"><a href="#SQL中的JOIN查询" class="headerlink" title="SQL中的JOIN查询"></a><strong>SQL中的JOIN查询</strong></h3><p>SQL中可以使用JOIN表链接方式将多个关系数据表中的数据用一条简单的查询语句查询出来。NoSQL暂未提供类似JOIN的查询方式对多个数据集中的数据做查询。所以大部分NoSQL使用非规范化的数据存储方式存储数据。</p>
+<h3 id="数据耦合性"><a href="#数据耦合性" class="headerlink" title="数据耦合性"></a><strong>数据耦合性</strong></h3><p>SQL中不允许删除已经被使用的外部数据，而NoSQL中则没有这种强耦合的概念，可以随时删除任何数据。</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a><strong>事务</strong></h3><p>SQL中如果多张表数据需要同批次被更新，即如果其中一张表更新失败的话其他表也不能更新成功。这种场景可以通过事务来控制，可以在所有命令完成后再统一提交事务。而NoSQL中没有事务这个概念，每一个数据集的操作都是原子级的。</p>
+<h3 id="增删改查语法"><a href="#增删改查语法" class="headerlink" title="增删改查语法"></a><strong>增删改查语法</strong></h3><h3 id="查询性能"><a href="#查询性能" class="headerlink" title="查询性能"></a>查询性能</h3><p>在相同水平的系统设计的前提下，因为NoSQL中省略了JOIN查询的消耗，故理论上性能上是优于SQL的。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h4 id="目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。"><a href="#目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。" class="headerlink" title="目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。"></a>目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。</h4><p><strong>关系型数据库适合存储结构化数据，如用户的帐号、地址：</strong></p>
+<p>　　1）这些数据通常需要做结构化查询（嗯，好像是废话），比如join，这时候，关系型数据库就要胜出一筹</p>
+<p>　　2）这些数据的规模、增长的速度通常是可以预期的</p>
+<p>　　3）事务性、一致性</p>
+<p><strong>NoSQL适合存储非结构化数据，如文章、评论：</strong></p>
+<p>　　1）这些数据通常用于模糊处理，如全文搜索、机器学习</p>
+<p>　　2）这些数据是海量的，而且增长的速度是难以预期的，</p>
+<p>　　3）根据数据的特点，NoSQL数据库通常具有无限（至少接近）伸缩性</p>
+<p>　　4）按key获取数据效率很高，但是对join或其他结构化查询的支持就比较差</p>
+<p>基于它们的适用范围不同，目前主流架构才会采用组合方案，一个也不能少。目前为止，还没有出现一个能够通吃各种场景的数据库，而且根据CAP理论，这样的数据库是不存在的。</p>
 
     </article>
     <!-- license  -->
@@ -416,17 +476,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/08/29/SolrCloud/" title= "SolrCloud的搭建和使用">
-                    <div class="nextTitle">SolrCloud的搭建和使用</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/08/27/redis总结/" title= "redis总结">
-                    <div class="prevTitle">redis总结</div>
+                <a href= "/2018/09/30/jdk并发包的使用/" title= "jdk并发包">
+                    <div class="prevTitle">jdk并发包</div>
                 </a>
             
         </li>
@@ -547,7 +602,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系型数据库-SQL"><span class="toc-number">1.</span> <span class="toc-text">关系型数据库(SQL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的关系型数据库"><span class="toc-number">1.1.</span> <span class="toc-text">常见的关系型数据库:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.</span> <span class="toc-text">特点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.4.</span> <span class="toc-text">缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#适合处理一般量级数据"><span class="toc-number">1.4.1.</span> <span class="toc-text">适合处理一般量级数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非关系型数据库-NoSQL"><span class="toc-number">2.</span> <span class="toc-text">非关系型数据库(NoSQL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL数据库一般分为四大类"><span class="toc-number">2.1.</span> <span class="toc-text">NoSQL数据库一般分为四大类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#键值-Key-Value-存储数据库"><span class="toc-number">2.1.1.</span> <span class="toc-text">键值(Key-Value)存储数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列存储数据库"><span class="toc-number">2.2.</span> <span class="toc-text">列存储数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档型数据库"><span class="toc-number">2.3.</span> <span class="toc-text">文档型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图形-Graph-数据库"><span class="toc-number">2.4.</span> <span class="toc-text">图形(Graph)数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">2.5.</span> <span class="toc-text">优点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">2.6.</span> <span class="toc-text">缺点:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#适合处理海量数据-效率高-但不一定安全"><span class="toc-number">2.6.1.</span> <span class="toc-text">适合处理海量数据,效率高,但不一定安全</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">3.</span> <span class="toc-text">区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存储方式"><span class="toc-number">3.1.</span> <span class="toc-text">存储方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表-数据集合的数据的关系"><span class="toc-number">3.2.</span> <span class="toc-text">表/数据集合的数据的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部数据存储"><span class="toc-number">3.3.</span> <span class="toc-text">外部数据存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL中的JOIN查询"><span class="toc-number">3.4.</span> <span class="toc-text">SQL中的JOIN查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据耦合性"><span class="toc-number">3.5.</span> <span class="toc-text">数据耦合性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务"><span class="toc-number">3.6.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增删改查语法"><span class="toc-number">3.7.</span> <span class="toc-text">增删改查语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询性能"><span class="toc-number">3.8.</span> <span class="toc-text">查询性能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">4.</span> <span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。"><span class="toc-number">4.0.1.</span> <span class="toc-text">目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -560,6 +615,8 @@ top:50vh;
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-panel-archives">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -642,7 +699,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/jdk并发包/" >jdk并发包</a>
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/jdk并发包的使用/" >jdk并发包</a>
         </li>
     
     
@@ -684,11 +741,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2018/08/27/image/" >image</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">08/27</span><a class="archive-post-title" href= "/2018/08/27/搭建博客过程/" >Hexo + github搭建个人博客的过程</a>
         </li>
     
@@ -697,10 +749,26 @@ top:50vh;
             <span class="archive-post-date">08/26</span><a class="archive-post-title" href= "/2018/08/26/简介/" >测试</a>
         </li>
     
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
+        </li>
+    
     </div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="sql"><span class="iconfont-archer">&#xe606;</span>sql</span>
     
         <span class="sidebar-tag-name" data-tags="github"><span class="iconfont-archer">&#xe606;</span>github</span>
     
