@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>哲&#39;s HeroicCollege</title>
+    <title>使用VMware启动虚拟机无法打开vmx文件解决办法 · 哲&#39;s HeroicCollege</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -213,12 +213,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >哲&#39;s HeroicCollege.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">使用VMware启动虚拟机无法打开vmx文件解决办法</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>哲's HeroicCollege.</a>
 </header>
@@ -230,24 +241,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            使用VMware启动虚拟机无法打开vmx文件解决办法
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "linux">linux</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">203</span>阅读时长: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/10/09</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -348,41 +409,62 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/10/07/使用redis实现分布式锁/" >
-            
-                <span>使用redis实现分布式锁</span>
-        </a>
-        <div class="abstract-content">
-            模拟秒杀代码12345678910111213141516171819202122232425262728293031323334353637383940import com.wechatorder.sell.service.SeckillService;import lombok.exter...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/07</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "redis">redis</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "分布式锁">分布式锁</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <p><strong>今天在使用从别人那里复制过来的linux安装文件的时候出现了问题</strong></p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012067664.png" alt="   "></p>
+<p><strong>VmWare加载虚拟机</strong></p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012304279.png" alt="   "></p>
+<p><strong>开启虚拟机的时候出现了错误提示</strong></p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012362903.png" alt="   "></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>使用Notepad++或者其他编辑软件打开.vmx为后缀的文件</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012428885.png" alt="   "></p>
+<p>将文件中的virtualHW.version=”14” 改为10或者改为你当前使用的VMware的版本,这里我改成了12</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012595267.png" alt="   "></p>
+<p>再次启动发现这次错误信息变成了这样</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539012914791.png" alt="   "></p>
+<p>这里提示的就已经很直白了,点击虚拟机-&gt;设置</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539013038072.png" alt="   "></p>
+<p>-&gt;选项,然后客户机操作系统勾选Linux, 因为我用的是CentOS所以版本选择CentOS 64位</p>
+<p>点击确定 再次启动</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539013092550.png" alt="   "></p>
+<p>点击我已复制该虚拟机</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539013288527.png" alt="   "></p>
+<p>启动成功!</p>
+<p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539013355617.png" alt="   "></p>
+<p>之后更改mac地址和ip地址即可</p>
+
     </article>
+    <!-- license  -->
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/10/09/深入了解Zookeeper/" title= "深入了解Zookeeper">
+                    <div class="prevTitle">深入了解Zookeeper</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -469,6 +551,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -781,6 +881,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

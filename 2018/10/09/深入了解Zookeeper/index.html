@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>对比SQL和NOSQL · 哲&#39;s HeroicCollege</title>
+    <title>深入了解Zookeeper · 哲&#39;s HeroicCollege</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -227,7 +227,7 @@
                 <a href="/" >哲&#39;s HeroicCollege.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">对比SQL和NOSQL</a>
+                <a href="#" class="post-name">深入了解Zookeeper</a>
             </div>
     </div>
     
@@ -257,7 +257,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            对比SQL和NOSQL
+            深入了解Zookeeper
             <!-- 404 -->
             
         </h1>
@@ -276,18 +276,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "sql">sql</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "zookeeper">zookeeper</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">1,732</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2,944</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/09/30</span>
+                    <span class="post-intro-time">2018/10/09</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -411,63 +411,128 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h2 id="关系型数据库-SQL"><a href="#关系型数据库-SQL" class="headerlink" title="关系型数据库(SQL)"></a>关系型数据库(SQL)</h2><h3 id="常见的关系型数据库"><a href="#常见的关系型数据库" class="headerlink" title="常见的关系型数据库:"></a>常见的关系型数据库:</h3><p>mysql,oracle</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h3><p>数据合数据之间,表和字段之间,表和表之间是存在关系的</p>
-<p>简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>1、数据之间有关系 ,容易理解,在进行数据增删改查时非常方便</p>
-<p>2、通用的SQL语言使得操作关系型数据库非常方便</p>
-<p>3、关系型数据库有事物操作 ,保证了数据的完整性</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>1、固定的表结构 </p>
-<p>2、数据和数据之间有关系 , 关系是由底层大量算法保证</p>
-<p>比如 select * from student 每次都执行大量算法,会消耗系统资源 ,拉低系统运行速度</p>
-<p>3、关系型数据库在面对海量数据的增删改查时会显得无能为力,很可能宕机</p>
-<p>4、海量数据环境下数据表难以维护</p>
-<h4 id="适合处理一般量级数据"><a href="#适合处理一般量级数据" class="headerlink" title="适合处理一般量级数据"></a>适合处理一般量级数据</h4><h2 id="非关系型数据库-NoSQL"><a href="#非关系型数据库-NoSQL" class="headerlink" title="非关系型数据库(NoSQL)"></a>非关系型数据库(NoSQL)</h2><p>Nosql并不是没有sql的意思 而是Not Only SQL 不仅仅是sql</p>
-<p>非关系型数据库设计之初是为了替代关系型数据库</p>
-<h3 id="NoSQL数据库一般分为四大类"><a href="#NoSQL数据库一般分为四大类" class="headerlink" title="NoSQL数据库一般分为四大类"></a>NoSQL数据库一般分为四大类</h3><h4 id="键值-Key-Value-存储数据库"><a href="#键值-Key-Value-存储数据库" class="headerlink" title="键值(Key-Value)存储数据库"></a>键值(Key-Value)存储数据库</h4><p><strong>相关产品:</strong>Tokyo Cabinet/Tyrant, Redis ,Voldemort, Berkeley DB</p>
-<p><strong>典型应用:</strong>内容缓存,主要用于处理大量数据的高访问负载.</p>
-<p><strong>数据模型:</strong>一系列键值对</p>
-<p><strong>优势:</strong>优秀的快速查询,稳定性强</p>
-<p><strong>劣势:</strong>存储的数据缺少结构化</p>
-<h3 id="列存储数据库"><a href="#列存储数据库" class="headerlink" title="列存储数据库"></a>列存储数据库</h3><p><strong>相关产品:</strong>Cassandra,HBase,Riak</p>
-<p><strong>典型应用:</strong>分布式的文件系统</p>
-<p><strong>数据模型:</strong>以列簇式存储,将同一列数据存在一起</p>
-<p><strong>优势:</strong>查找速递快,可扩展性强,更容易进行分布式扩展</p>
-<p><strong>劣势:</strong>功能相对局限,使用极大的内存才可调配,且系统处理算法时将有数秒甚至更长时间的不可用,导致大量处理超时</p>
-<h3 id="文档型数据库"><a href="#文档型数据库" class="headerlink" title="文档型数据库"></a>文档型数据库</h3><p><strong>相关产品:</strong>MongoDB,CouchDB</p>
-<p><strong>典型应用:</strong>Web应用(于Key-Value类似,Value是结构化的)</p>
-<p><strong>数据模型:</strong>一系列键值对</p>
-<p><strong>优势:</strong>数据结构要求不严格</p>
-<p><strong>劣势:</strong>查询性能不高,而且缺乏统一的查询语法</p>
-<h3 id="图形-Graph-数据库"><a href="#图形-Graph-数据库" class="headerlink" title="图形(Graph)数据库"></a>图形(Graph)数据库</h3><p><strong>相关数据库:</strong>Neo4j,InfoGrid,Infinite Graph</p>
-<p><strong>典型应用:</strong>社交网络[关系网]</p>
-<p><strong>数据模型:</strong>图结构</p>
-<p><strong>优势:</strong>利用图结构相关算法</p>
-<p><strong>劣势:</strong>需要对整个图做计算才能得出结果,不容易做分布式的集群方案.局限性过强</p>
-<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点:"></a>优点:</h3><p>1、无需经过sql层的解析，读写性能很高</p>
-<p>2、海量数据的增删改查非常轻松</p>
-<p>3、容易维护</p>
-<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点:"></a>缺点:</h3><p>1、数据和数据之间没有关系,所以不能一目了然</p>
-<p>2、没有强大的事物保证数据的完整性 </p>
-<h4 id="适合处理海量数据-效率高-但不一定安全"><a href="#适合处理海量数据-效率高-但不一定安全" class="headerlink" title="适合处理海量数据,效率高,但不一定安全"></a>适合处理海量数据,效率高,但不一定安全</h4><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a><strong>存储方式</strong></h3><p>SQL数据存在特定结构的表中；而NoSQL则更加灵活和可扩展，存储方式可以省是JSON文档、哈希表或者其他方式。</p>
-<h3 id="表-数据集合的数据的关系"><a href="#表-数据集合的数据的关系" class="headerlink" title="表/数据集合的数据的关系"></a><strong>表/数据集合的数据的关系</strong></h3><p>在SQL中，必须定义好表和字段结构后才能添加数据，例如定义表的主键(primary key)，索引(index),触发器(trigger),存储过程(stored procedure)等。表结构可以在被定义之后更新，但是如果有比较大的结构变更的话就会变得比较复杂。在NoSQL中，数据可以在任何时候任何地方添加，不需要先定义表。</p>
-<p>NoSQL也可以在数据集中建立索引。以MongoDB为例，会自动在数据集合创建后创建唯一值_id字段，这样的话就可以在数据集创建后增加索引。从这点来看，NoSQL可能更加适合初始化数据还不明确或者未定的项目中。</p>
-<h3 id="外部数据存储"><a href="#外部数据存储" class="headerlink" title="外部数据存储"></a><strong>外部数据存储</strong></h3><p>SQL中如何需要增加外部关联数据的话，规范化做法是在原表中增加一个外键，关联外部数据表。</p>
-<p>在NoSQL中除了规范化的外部数据表做法以外，还能用非规范化方式把外部数据直接放到原数据集中，以提高查询效率。缺点也比较明显，更新数据的时候将会比较麻烦。</p>
-<h3 id="SQL中的JOIN查询"><a href="#SQL中的JOIN查询" class="headerlink" title="SQL中的JOIN查询"></a><strong>SQL中的JOIN查询</strong></h3><p>SQL中可以使用JOIN表链接方式将多个关系数据表中的数据用一条简单的查询语句查询出来。NoSQL暂未提供类似JOIN的查询方式对多个数据集中的数据做查询。所以大部分NoSQL使用非规范化的数据存储方式存储数据。</p>
-<h3 id="数据耦合性"><a href="#数据耦合性" class="headerlink" title="数据耦合性"></a><strong>数据耦合性</strong></h3><p>SQL中不允许删除已经被使用的外部数据，而NoSQL中则没有这种强耦合的概念，可以随时删除任何数据。</p>
-<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a><strong>事务</strong></h3><p>SQL中如果多张表数据需要同批次被更新，即如果其中一张表更新失败的话其他表也不能更新成功。这种场景可以通过事务来控制，可以在所有命令完成后再统一提交事务。而NoSQL中没有事务这个概念，每一个数据集的操作都是原子级的。</p>
-<h3 id="增删改查语法"><a href="#增删改查语法" class="headerlink" title="增删改查语法"></a><strong>增删改查语法</strong></h3><h3 id="查询性能"><a href="#查询性能" class="headerlink" title="查询性能"></a>查询性能</h3><p>在相同水平的系统设计的前提下，因为NoSQL中省略了JOIN查询的消耗，故理论上性能上是优于SQL的。</p>
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h4 id="目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。"><a href="#目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。" class="headerlink" title="目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。"></a>目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。</h4><p><strong>关系型数据库适合存储结构化数据，如用户的帐号、地址：</strong></p>
-<p>　　1）这些数据通常需要做结构化查询（嗯，好像是废话），比如join，这时候，关系型数据库就要胜出一筹</p>
-<p>　　2）这些数据的规模、增长的速度通常是可以预期的</p>
-<p>　　3）事务性、一致性</p>
-<p><strong>NoSQL适合存储非结构化数据，如文章、评论：</strong></p>
-<p>　　1）这些数据通常用于模糊处理，如全文搜索、机器学习</p>
-<p>　　2）这些数据是海量的，而且增长的速度是难以预期的，</p>
-<p>　　3）根据数据的特点，NoSQL数据库通常具有无限（至少接近）伸缩性</p>
-<p>　　4）按key获取数据效率很高，但是对join或其他结构化查询的支持就比较差</p>
-<p>基于它们的适用范围不同，目前主流架构才会采用组合方案，一个也不能少。目前为止，还没有出现一个能够通吃各种场景的数据库，而且根据CAP理论，这样的数据库是不存在的。</p>
+        <p>相信很多人都用过Zookeerper,但是你真的了解Zookeeper是什么吗?如果面试官让你给他讲一下Zookeeper,你能讲多少呢?</p>
+<p>前几天,总结了一下自己用Zookeeper的经历,搭建过Zookeeper集群,项目中使用Zookeeper作为Dubbo的注册中心,另外在搭建solrCloud的时候使用过Zookeeper集中管理配置文件、集群管理(选举主从). 但要说Zookeeper到底是什么,想了半天,脑海中只是能简单的浮现出几句话:”1.Zookeeper 是Hadoop 生态系统的一员;2.适合作为Dubbox 服务的注册中心，可用于生产环境;3.构建zookeeper集群服务器最好是奇数台;4.zookeeper可以用来协调集群，公共数据的存放.”可见,我对zookeeper的了解仅仅停留在了表面,所以,我又对zookeeper的知识点详细的总结了一下</p>
+<h2 id="ZooKeeper-概述"><a href="#ZooKeeper-概述" class="headerlink" title="ZooKeeper 概述"></a>ZooKeeper 概述</h2><p>Zookeeper 是一个<strong>分布式协调服务的开源框架。 主要用来解决分布式集群中应用系统的一致性问题</strong>，例如怎样避免同时操作同一数据造成脏读的问题。</p>
+<p>ZooKeeper 本质上是一个<strong>分布式的小文件存储系统</strong>。 提供基于类似于文件系统的目录树方式的数据存储，并且可以对树中的节点进行有效管理。从而用来维护和监控你存储的数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。 诸如： 统一命名服务(dubbo)、分布式配置管理(solr的配置集中管理)、分布式消息队列（sub/pub）、分布式锁、分布式协调等功能。</p>
+<h2 id="zookeeper的架构图"><a href="#zookeeper的架构图" class="headerlink" title="zookeeper的架构图"></a>zookeeper的架构图</h2><p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539017395040.png" alt="   "></p>
+<h3 id="Leader"><a href="#Leader" class="headerlink" title="Leader:"></a>Leader:</h3><p>Zookeeper 集群工作的核心<br>事务请求（写操作） 的唯一调度和处理者，保证集群事务处理的顺序性；集群内部各个服务器的调度者。<br>对于 create， setData， delete 等有写操作的请求，则需要统一转发给leader 处理， leader 需要决定编号、执行操作，这个过程称为一个事务。</p>
+<h3 id="Follower"><a href="#Follower" class="headerlink" title="Follower:"></a>Follower:</h3><p>处理客户端非事务（读操作） 请求，转发事务请求给 Leader；</p>
+<p>参与集群 Leader 选举投票 2n-1台可以做集群投票。此外，针对访问量比较大的 zookeeper 集群， 还可新增观察者角色。</p>
+<h3 id="Observer"><a href="#Observer" class="headerlink" title="Observer:"></a>Observer:</h3><p>观察者角色，观察 Zookeeper 集群的最新状态变化并将这些状态同步过来，其对于非事务请求可以进行独立处理，对于事务请求，则会转发给 Leader服务器进行处理。<br>不会参与任何形式的投票只提供非事务服务，通常用于在不影响集群事务处理能力的前提下提升集群的非事务处理能力。说白了就是增加并发的读请求</p>
+<h2 id="zookeeper的特性"><a href="#zookeeper的特性" class="headerlink" title="zookeeper的特性"></a>zookeeper的特性</h2><h3 id="1-全局数据一致："><a href="#1-全局数据一致：" class="headerlink" title="1.全局数据一致："></a>1.全局数据一致：</h3><p>每个 server 保存一份相同的数据副本， client 无论连接到哪个 server，展示的数据都是一致的，这是最重要的特征；</p>
+<h3 id="2-可靠性："><a href="#2-可靠性：" class="headerlink" title="2.可靠性："></a>2.可靠性：</h3><p>如果消息被其中一台服务器接受，那么将被所有的服务器接受。</p>
+<h3 id="3-顺序性："><a href="#3-顺序性：" class="headerlink" title="3.顺序性："></a>3.顺序性：</h3><p>包括全局有序和偏序两种：全局有序是指如果在一台服务器上消息 a 在消息 b 前发布，则在所有Server 上消息 a 都将在消息 b 前被发布；偏序是指如果一个消息 b 在消息 a 后被同一个发送者发布， a 必将排在 b 前面。</p>
+<h3 id="4-数据更新原子性："><a href="#4-数据更新原子性：" class="headerlink" title="4.数据更新原子性："></a>4.数据更新原子性：</h3><p>一次数据更新要么成功（半数以上节点成功），要么失败，不存在中间状态；</p>
+<h3 id="5-实时性："><a href="#5-实时性：" class="headerlink" title="5.实时性："></a>5.实时性：</h3><p>Zookeeper 保证客户端将在一个时间间隔范围内获得服务器的更新信息，或者服务器失效的信息。</p>
+<h2 id="zookeeper的数据模型"><a href="#zookeeper的数据模型" class="headerlink" title="zookeeper的数据模型"></a>zookeeper的数据模型</h2><p>ZooKeeper 的数据模型，在结构上和标准文件系统的非常相似，拥有一个层次的命名空间，都是采用树形层次结构，ZooKeeper 树中的每个节点被称为—Znode。和文件系统的目录树一样，ZooKeeper 树中的每个节点可以拥有子节点。但也有不同之处：</p>
+<ol>
+<li>Znode 兼具文件和目录两种特点。既像文件一样维护着数据、元信息、ACL、 时间戳等数据结构，又像目录一样可以作为路径标识的一部分，并可以具有 子 Znode。用户对 Znode 具有增、删、改、查等操作（权限允许的情况下）。</li>
+<li>Znode 具有原子性操作，读操作将获取与节点相关的所有数据，写操作也将 替换掉节点的所有数据。另外，每一个节点都拥有自己的 ACL(访问控制列表)，这个列表规定了用户的权限，即限定了特定用户对目标节点可以执行的操作。</li>
+<li>Znode 存储数据大小有限制。ZooKeeper 虽然可以关联一些数据，但并没有 被设计为常规的数据库或者大数据存储，相反的是，它用来管理调度数据， 比如分布式应用中的配置文件信息、状态信息、汇集位置等等。这些数据的 共同特性就是它们都是很小的数据，通常以 KB 为大小单位。ZooKeeper 的服 务器和客户端都被设计为严格检查并限制每个 Znode 的数据大小至多 1M，常规使用中应该远小于此值。</li>
+<li>Znode 通过路径引用，如同 Unix 中的文件路径。路径必须是绝对的，因此他 们必须由斜杠字符来开头。除此以外，他们必须是唯一的，也就是说每一个 路径只有一个表示，因此这些路径不能改变。在 ZooKeeper 中，路径由 Unicode 字符串组成，并且有一些限制。字符串”/zookeeper”用以保存管理 信息，比如关键配额信息。</li>
+</ol>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539018048802.png" alt="   "></p>
+<p>图中的每个节点称为一个 Znode。 每个 Znode 由 3 部分组成:</p>
+<p>stat：此为状态信息, 描述该 Znode 的版本, 权限等信息</p>
+<p>data：与该 Znode 关联的数据</p>
+<p>children：该 Znode 下的子节点 </p>
+<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><p>Znode 有两种，分别为临时节点和永久节点。</p>
+<p>节点的类型在创建时即被确定，并且不能改变。</p>
+<p>临时节点：该节点的生命周期依赖于创建它们的会话。一旦会话结束，临时 节点将被自动删除，当然可以也可以手动删除。临时节点不允许拥有子节点。</p>
+<p>永久节点：该节点的生命周期不依赖于会话，并且只有在客户端显示执行删除操作的时候，他们才能被删除。</p>
+<p>Znode 还有一个序列化的特性，如果创建的时候指定的话，该 Znode 的名字后面会自动追加一个不断增加的序列号。序列号对于此节点的父节点来说是唯一的，这样便会记录每个子节点创建的先后顺序。它的格式为“%10d”(10 位数字，没有数值的数位用 0 补充，例如“0000000001”)。</p>
+<p>这样便会存在四种类型的 Znode 节点，分别对应：</p>
+<p> PERSISTENT：永久节点</p>
+<p> EPHEMERAL：临时节点</p>
+<p> PERSISTENT_SEQUENTIAL：永久节点、序列化</p>
+<p> EPHEMERAL_SEQUENTIAL：临时节点、序列化</p>
+<h3 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h3><p><strong>每个 znode 都包含了一系列的属性</strong></p>
+<p>dataVersion：数据版本号，每次对节点进行 set 操作，dataVersion 的值都会增加 1（即使设置的是相同的数据），可有效避免了数据更新时出现的先后顺序问题。</p>
+<p>cversion ：子节点的版本号。当 znode 的子节点有变化时，cversion 的值就会增加 1。</p>
+<p>aclVersion ：ACL 的版本号。</p>
+<p>cZxid ：Znode 创建的事务 id。</p>
+<p>mZxid    ：Znode 被修改的事务 id，即每次对 znode 的修改都会更新 mZxid。</p>
+<p>对于 zk 来说，每次的变化都会产生一个唯一的事务 id，zxid（ZooKeeper Transaction Id）。通过 zxid，可以确定更新操作的先后顺序。例如，如果 zxid1小于 zxid2，说明 zxid1 操作先于 zxid2 发生，zxid 对于整个 zk 都是唯一的，即使操作的是不同的 znode。</p>
+<p>ctime：节点创建时的时间戳.</p>
+<p>mtime：节点最新一次更新发生时的时间戳.</p>
+<p>ephemeralOwner: 如果该节点为临时节点, ephemeralOwner 值表示与该节点绑定的 session id. 如果不是,ephemeralOwner 值为 0.</p>
+<p>在 client 和 server 通信之前,首先需要建立连接,该连接称为 session。连接建立后,如果发生连接超时、授权失败,或者显式关闭连接,连接便处于 CLOSED状态, 此时 session 结束。</p>
+<h2 id="zookeeper的watch机制"><a href="#zookeeper的watch机制" class="headerlink" title="zookeeper的watch机制"></a>zookeeper的watch机制</h2><p>ZooKeeper 提供了分布式数据发布/订阅功能，一个典型的发布/订阅模型系统定义了一种一对多的订阅关系，能让多个订阅者同时监听某一个主题对象，当这个主题对象自身状态变化时，会通知所有订阅者，使他们能够做出相应的处理。ZooKeeper 中，引入了 Watcher 机制来实现这种分布式的通知功能 。ZooKeeper 允许客户端向服务端注册一个 Watcher 监听，当服务端的一些事件触发了这个 Watcher，那么就会向指定客户端发送一个事件通知来实现分布式的通知功能。</p>
+<p>触发事件种类很多，如：节点创建，节点删除，节点改变，子节点改变等。</p>
+<p>总的来说可以概括 Watcher 为以下三个过程：客户端向服务端注册 Watcher、服务端事件发生触发 Watcher、客户端回调 Watcher 得到触发事件情况</p>
+<h3 id="watch机制特点"><a href="#watch机制特点" class="headerlink" title="watch机制特点"></a>watch机制特点</h3><p><strong>一次性触发</strong></p>
+<p>事件发生触发监听，一个 watcher event 就会被发送到设置监听的客户端，这种效果是一次性的，后续再次发生同样的事件，不会再次触发。</p>
+<p><strong>事件封装</strong></p>
+<p>ZooKeeper 使用 WatchedEvent 对象来封装服务端事件并传递。</p>
+<p>WatchedEvent 包含了每一个事件的三个基本属性：</p>
+<p>​    通知状态（keeperState），事件类型（EventType）和节点路径（path）</p>
+<p><strong>event 异步发送</strong></p>
+<p>watcher 的通知事件从服务端发送到客户端是异步的。</p>
+<p><strong>先注册再触发</strong></p>
+<p>Zookeeper 中的 watch 机制，必须客户端先去服务端注册监听，这样事件发送才会触发监听，通知给客户端。</p>
+<h3 id="通知状态和事件类型"><a href="#通知状态和事件类型" class="headerlink" title="通知状态和事件类型"></a>通知状态和事件类型</h3><p>同一个事件类型在不同的通知状态中代表的含义有所不同，下表列举了常见的通知状态和事件类型。</p>
+<table>
+<thead>
+<tr>
+<th>KeeperState</th>
+<th>EventType</th>
+<th>触发条件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>None   （-1）</td>
+<td>客户端与服务端成功建立连接</td>
+<td></td>
+</tr>
+<tr>
+<td>SyncConnected   （0）</td>
+<td>NodeCreated   （1）</td>
+<td>Watcher 监听的对应数据节点被创建</td>
+<td></td>
+</tr>
+<tr>
+<td>NodeDeleted   （2）</td>
+<td>Watcher 监听的对应数据节点被删除</td>
+<td>此时客户端和服务器处于连接状态</td>
+<td></td>
+</tr>
+<tr>
+<td>NodeDataChanged   （3）</td>
+<td>Watcher 监听的对应数据节点的数据内容   发生变更</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NodeChildChanged   （4）</td>
+<td>Wather 监听的对应节点的子节点数据列表发生变更</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Disconnected   （0）</td>
+<td>None   （-1）</td>
+<td>客户端与zookeeper服务器断开连接</td>
+<td>此时客户端和服务器处于断开连接状态</td>
+</tr>
+<tr>
+<td>Expired   （-112）</td>
+<td>Node   （-1）</td>
+<td>会话超时</td>
+<td>此时客户端会话失效，通常同时也会收到SessionExpiredException 异常</td>
+</tr>
+<tr>
+<td>AuthFailed   （4）</td>
+<td>None   （-1）</td>
+<td>通常有两种情况   1：使用错误的   schema 进行权限检查   2：SASL 权限检查失败</td>
+<td>通常同时也会收到AuthFailedException 异常</td>
+</tr>
+</tbody>
+</table>
+<p>其中连接状态事件(type=None, path=null)不需要客户端注册，客户端只要有需要直接处理就行了。</p>
 
     </article>
     <!-- license  -->
@@ -477,16 +542,16 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/10/07/使用redis实现分布式锁/" title= "使用redis实现分布式锁">
-                    <div class="nextTitle">使用redis实现分布式锁</div>
+                <a href= "/2018/10/09/使用VMware启动虚拟机无法打开vmx文件解决办法/" title= "使用VMware启动虚拟机无法打开vmx文件解决办法">
+                    <div class="nextTitle">使用VMware启动虚拟机无法打开vmx文件解决办法</div>
                 </a>
             
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/09/30/jdk并发包的使用/" title= "jdk并发包的使用">
-                    <div class="prevTitle">jdk并发包的使用</div>
+                <a href= "/2018/10/07/使用redis实现分布式锁/" title= "使用redis实现分布式锁">
+                    <div class="prevTitle">使用redis实现分布式锁</div>
                 </a>
             
         </li>
@@ -607,7 +672,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关系型数据库-SQL"><span class="toc-number">1.</span> <span class="toc-text">关系型数据库(SQL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见的关系型数据库"><span class="toc-number">1.1.</span> <span class="toc-text">常见的关系型数据库:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.</span> <span class="toc-text">特点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.4.</span> <span class="toc-text">缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#适合处理一般量级数据"><span class="toc-number">1.4.1.</span> <span class="toc-text">适合处理一般量级数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非关系型数据库-NoSQL"><span class="toc-number">2.</span> <span class="toc-text">非关系型数据库(NoSQL)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL数据库一般分为四大类"><span class="toc-number">2.1.</span> <span class="toc-text">NoSQL数据库一般分为四大类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#键值-Key-Value-存储数据库"><span class="toc-number">2.1.1.</span> <span class="toc-text">键值(Key-Value)存储数据库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列存储数据库"><span class="toc-number">2.2.</span> <span class="toc-text">列存储数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档型数据库"><span class="toc-number">2.3.</span> <span class="toc-text">文档型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图形-Graph-数据库"><span class="toc-number">2.4.</span> <span class="toc-text">图形(Graph)数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">2.5.</span> <span class="toc-text">优点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">2.6.</span> <span class="toc-text">缺点:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#适合处理海量数据-效率高-但不一定安全"><span class="toc-number">2.6.1.</span> <span class="toc-text">适合处理海量数据,效率高,但不一定安全</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">3.</span> <span class="toc-text">区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#存储方式"><span class="toc-number">3.1.</span> <span class="toc-text">存储方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表-数据集合的数据的关系"><span class="toc-number">3.2.</span> <span class="toc-text">表/数据集合的数据的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外部数据存储"><span class="toc-number">3.3.</span> <span class="toc-text">外部数据存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL中的JOIN查询"><span class="toc-number">3.4.</span> <span class="toc-text">SQL中的JOIN查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据耦合性"><span class="toc-number">3.5.</span> <span class="toc-text">数据耦合性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务"><span class="toc-number">3.6.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增删改查语法"><span class="toc-number">3.7.</span> <span class="toc-text">增删改查语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询性能"><span class="toc-number">3.8.</span> <span class="toc-text">查询性能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用"><span class="toc-number">4.</span> <span class="toc-text">应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#目前许多大型互联网项目都会选用MySQL（或任何关系型数据库）-NoSQL的组合方案。"><span class="toc-number">4.0.1.</span> <span class="toc-text">目前许多大型互联网项目都会选用MySQL（或任何关系型数据库） + NoSQL的组合方案。</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-概述"><span class="toc-number">1.</span> <span class="toc-text">ZooKeeper 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的架构图"><span class="toc-number">2.</span> <span class="toc-text">zookeeper的架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Leader"><span class="toc-number">2.1.</span> <span class="toc-text">Leader:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Follower"><span class="toc-number">2.2.</span> <span class="toc-text">Follower:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Observer"><span class="toc-number">2.3.</span> <span class="toc-text">Observer:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的特性"><span class="toc-number">3.</span> <span class="toc-text">zookeeper的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局数据一致："><span class="toc-number">3.1.</span> <span class="toc-text">1.全局数据一致：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-可靠性："><span class="toc-number">3.2.</span> <span class="toc-text">2.可靠性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-顺序性："><span class="toc-number">3.3.</span> <span class="toc-text">3.顺序性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-数据更新原子性："><span class="toc-number">3.4.</span> <span class="toc-text">4.数据更新原子性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-实时性："><span class="toc-number">3.5.</span> <span class="toc-text">5.实时性：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的数据模型"><span class="toc-number">4.</span> <span class="toc-text">zookeeper的数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构"><span class="toc-number">4.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点类型"><span class="toc-number">4.2.</span> <span class="toc-text">节点类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点属性"><span class="toc-number">4.3.</span> <span class="toc-text">节点属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的watch机制"><span class="toc-number">5.</span> <span class="toc-text">zookeeper的watch机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#watch机制特点"><span class="toc-number">5.1.</span> <span class="toc-text">watch机制特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知状态和事件类型"><span class="toc-number">5.2.</span> <span class="toc-text">通知状态和事件类型</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
