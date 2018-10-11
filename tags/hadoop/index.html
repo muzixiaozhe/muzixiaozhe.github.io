@@ -356,59 +356,26 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/30/sqlNosql对比/" >
+        <a class="abstract-title" href = "/2018/10/12/hdfs读写流程/" >
             
-                <span>对比SQL和NOSQL</span>
+                <span>HDFS的读写流程</span>
         </a>
         <div class="abstract-content">
-            关系型数据库(SQL)常见的关系型数据库:mysql,oracle
-特点:数据合数据之间,表和字段之间,表和表之间是存在关系的
-简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
-优点1、数据之间有关系 ,容易理解,在进行数据增删改查时非...
+            HDFS文件写入过程
+1.client发起文件上传请求 通过RPC和NameNode建立连接,NameNode检查目标文件是否存在,检查父目录是否存在,检查用户是否有权限,返回是否可以上传
+2.client请求第一个block该传输到那些DataNode服务器上
+3.NameNode根据配置文...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/30</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/12</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "sql">sql</a>
-    
-</div>
-            
-        </div>
-    </article>
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/30/jdk并发包的使用/" >
-            
-                <span>jdk并发包的使用</span>
-        </a>
-        <div class="abstract-content">
-            jdk并发包ReentrantLock 可重入锁
-可重入锁是synchronized的升级版, 提供了更多的场景, 使用比较方便.
-ReentrantLock 有以下特性和方法:
-可重入 reentrantLock.lock()      .unlock()
-可中断 reentrantLock...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/30</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "多线程">多线程</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hadoop">hadoop</a>
     
 </div>
             

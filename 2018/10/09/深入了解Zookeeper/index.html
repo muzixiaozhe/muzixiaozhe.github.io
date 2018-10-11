@@ -282,7 +282,7 @@ height:50vh;
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2,944</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">2,904</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
@@ -411,8 +411,7 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>相信很多人都用过Zookeerper,但是你真的了解Zookeeper是什么吗?如果面试官让你给他讲一下Zookeeper,你能讲多少呢?</p>
-<p>前几天,总结了一下自己用Zookeeper的经历,搭建过Zookeeper集群,项目中使用Zookeeper作为Dubbo的注册中心,另外在搭建solrCloud的时候使用过Zookeeper集中管理配置文件、集群管理(选举主从). 但要说Zookeeper到底是什么,想了半天,脑海中只是能简单的浮现出几句话:”1.Zookeeper 是Hadoop 生态系统的一员;2.适合作为Dubbox 服务的注册中心，可用于生产环境;3.构建zookeeper集群服务器最好是奇数台;4.zookeeper可以用来协调集群，公共数据的存放.”可见,我对zookeeper的了解仅仅停留在了表面,所以,我又对zookeeper的知识点详细的总结了一下</p>
+        <p>前几天,总结了一下自己使用Zookeeper的经历,搭建过Zookeeper集群,项目中使用过Zookeeper作为Dubbo的注册中心,另外在搭建solrCloud的时候使用了Zookeeper集中管理配置文件、集群管理(选举主从). 但要说Zookeeper到底是什么,想了半天,脑海中只是能简单的浮现出几句话:”1.Zookeeper 是Hadoop 生态系统的一员;2.适合作为Dubbox 服务的注册中心，可用于生产环境;3.构建zookeeper集群服务器最好是奇数台;4.zookeeper可以用来协调集群，公共数据的存放.”可见,我对zookeeper的了解仅仅停留在了表面,所以,我对zookeeper的知识点重新梳理了一下</p>
 <h2 id="ZooKeeper-概述"><a href="#ZooKeeper-概述" class="headerlink" title="ZooKeeper 概述"></a>ZooKeeper 概述</h2><p>Zookeeper 是一个<strong>分布式协调服务的开源框架。 主要用来解决分布式集群中应用系统的一致性问题</strong>，例如怎样避免同时操作同一数据造成脏读的问题。</p>
 <p>ZooKeeper 本质上是一个<strong>分布式的小文件存储系统</strong>。 提供基于类似于文件系统的目录树方式的数据存储，并且可以对树中的节点进行有效管理。从而用来维护和监控你存储的数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。 诸如： 统一命名服务(dubbo)、分布式配置管理(solr的配置集中管理)、分布式消息队列（sub/pub）、分布式锁、分布式协调等功能。</p>
 <h2 id="zookeeper的架构图"><a href="#zookeeper的架构图" class="headerlink" title="zookeeper的架构图"></a>zookeeper的架构图</h2><p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539017395040.png" alt="   "></p>
@@ -802,9 +801,12 @@ top:50vh;
     
     
     
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 9
+        Total : 10
         </div>
         <!-- search  -->
         
@@ -843,8 +845,27 @@ top:50vh;
     
         </ul>
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2018/10/12/hdfs读写流程/" >HDFS的读写流程</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -876,32 +897,20 @@ top:50vh;
             <span class="archive-post-date">08/26</span><a class="archive-post-title" href= "/2018/08/26/简介/" >测试</a>
         </li>
     
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
-        </li>
-    
     </div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="sql"><span class="iconfont-archer">&#xe606;</span>sql</span>
+        <span class="sidebar-tag-name" data-tags="hadoop"><span class="iconfont-archer">&#xe606;</span>hadoop</span>
     
-        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+        <span class="sidebar-tag-name" data-tags="sql"><span class="iconfont-archer">&#xe606;</span>sql</span>
     
         <span class="sidebar-tag-name" data-tags="github"><span class="iconfont-archer">&#xe606;</span>github</span>
     
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
     
         <span class="sidebar-tag-name" data-tags="Solr"><span class="iconfont-archer">&#xe606;</span>Solr</span>
     
@@ -913,11 +922,11 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="NoSql"><span class="iconfont-archer">&#xe606;</span>NoSql</span>
     
-        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
-    
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     
         <span class="sidebar-tag-name" data-tags="分布式锁"><span class="iconfont-archer">&#xe606;</span>分布式锁</span>
+    
+        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
     
         <span class="sidebar-tag-name" data-tags="多线程"><span class="iconfont-archer">&#xe606;</span>多线程</span>
     

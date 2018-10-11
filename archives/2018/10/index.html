@@ -356,6 +356,38 @@
     
     
     <article class="index-post">
+        <a class="abstract-title" href = "/2018/10/12/hdfs读写流程/" >
+            
+                <span>HDFS的读写流程</span>
+        </a>
+        <div class="abstract-content">
+            HDFS文件写入过程
+1.client发起文件上传请求 通过RPC和NameNode建立连接,NameNode检查目标文件是否存在,检查父目录是否存在,检查用户是否有权限,返回是否可以上传
+2.client请求第一个block该传输到那些DataNode服务器上
+3.NameNode根据配置文...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/10/12</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hadoop">hadoop</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
         <a class="abstract-title" href = "/2018/10/09/使用VMware启动虚拟机无法打开vmx文件解决办法/" >
             
                 <span>使用VMware启动虚拟机无法打开vmx文件解决办法</span>
@@ -398,8 +430,7 @@ VmWare加载虚拟机
                 <span>深入了解Zookeeper</span>
         </a>
         <div class="abstract-content">
-            相信很多人都用过Zookeerper,但是你真的了解Zookeeper是什么吗?如果面试官让你给他讲一下Zookeeper,你能讲多少呢?
-前几天,总结了一下自己用Zookeeper的经历,搭建过Zookeeper集群,项目中使用Zookeeper作为Dubbo的注册中心,另外在搭建solrC...
+            前几天,总结了一下自己使用Zookeeper的经历,搭建过Zookeeper集群,项目中使用过Zookeeper作为Dubbo的注册中心,另外在搭建solrCloud的时候使用了Zookeeper集中管理配置文件、集群管理(选举主从). 但要说Zookeeper到底是什么,想了半天,脑海中只是...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -664,9 +695,12 @@ VmWare加载虚拟机
     
     
     
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 9
+        Total : 10
         </div>
         <!-- search  -->
         
@@ -705,8 +739,27 @@ VmWare加载虚拟机
     
         </ul>
     
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
     <div class="archive-year"> 2018 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/12</span><a class="archive-post-title" href= "/2018/10/12/hdfs读写流程/" >HDFS的读写流程</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -738,32 +791,20 @@ VmWare加载虚拟机
             <span class="archive-post-date">08/26</span><a class="archive-post-title" href= "/2018/08/26/简介/" >测试</a>
         </li>
     
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> Invalid date </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
-        </li>
-    
     </div>
   </div>
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="sql"><span class="iconfont-archer">&#xe606;</span>sql</span>
+        <span class="sidebar-tag-name" data-tags="hadoop"><span class="iconfont-archer">&#xe606;</span>hadoop</span>
     
-        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
+        <span class="sidebar-tag-name" data-tags="sql"><span class="iconfont-archer">&#xe606;</span>sql</span>
     
         <span class="sidebar-tag-name" data-tags="github"><span class="iconfont-archer">&#xe606;</span>github</span>
     
         <span class="sidebar-tag-name" data-tags="Hexo"><span class="iconfont-archer">&#xe606;</span>Hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
     
         <span class="sidebar-tag-name" data-tags="Solr"><span class="iconfont-archer">&#xe606;</span>Solr</span>
     
@@ -775,11 +816,11 @@ VmWare加载虚拟机
     
         <span class="sidebar-tag-name" data-tags="NoSql"><span class="iconfont-archer">&#xe606;</span>NoSql</span>
     
-        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
-    
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     
         <span class="sidebar-tag-name" data-tags="分布式锁"><span class="iconfont-archer">&#xe606;</span>分布式锁</span>
+    
+        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
     
         <span class="sidebar-tag-name" data-tags="多线程"><span class="iconfont-archer">&#xe606;</span>多线程</span>
     
