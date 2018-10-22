@@ -78,8 +78,6 @@
     <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -213,8 +211,10 @@
 </head>
 
     
+        <body class="home-body">
     
-<header class="header">
+    
+<header class="header index-header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
@@ -230,21 +230,34 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 文章页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/index-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            哲's HeroicCollege.
+            <!-- 文章页  -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
+            
+            
+                it's better to burn out than to fade away
+            
+            <!-- 文章页  -->
             
         </p>
         <!-- 文章页meta -->
@@ -356,16 +369,14 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/08/27/redis总结/" >
+        <a class="abstract-title" href = "/2018/08/27/搭建博客过程/" >
             
-                <span>redis学习总结</span>
+                <span>Hexo + github搭建个人博客的过程</span>
         </a>
         <div class="abstract-content">
-            redis简介redis 通常被称为数据结构服务器 ,是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。 
-redis的特点
-redis由于将数据存放在内存中,所以读写效率非常高
-
-丰富的数据类型 – string(字符串)，hash(哈希)，list(列表)，set(...
+            安装Hexo安装nodejs1nodejs下载链接 : http://nodejs.cn/download/
+​    一直点下一步即可,安装完成后 cmd 在命令提示窗口中输入 node -v 如果出现版本信息证明安装成功
+​    nodejs目录下创建两个目录，分别是node_cache...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
@@ -376,19 +387,145 @@ redis由于将数据存放在内存中,所以读写效率非常高
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "Redis">Redis</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "github">github</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "NoSql">NoSql</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Hexo">Hexo</a>
     
 </div>
             
         </div>
     </article>
     
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/08/26/简介/" >
+            
+                <span>测试</span>
+        </a>
+        <div class="abstract-content">
+            坚持做自己懒得做但正确的事情，就能得到别人想得到却得不到的东西。
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/26</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
     <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">&#60; PREV</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
     
 </main>
             <!-- profile -->
+            
+            <div class="profile">
+    <img class="profile-avatar" alt="avatar" src= /avatar/Misaka.jpg >
+    <div class="profile-name">哲</div>
+    
+    <div class="profile-signature">
+        不懈进取,永无止境
+    </div>
+    
+    
+    <div class="profile-social">
+        
+    
+        
+            
+                <a href="mailto:lipeizhe@126.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/muzixiaozhe" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <a href="https://blog.csdn.net/qq_42385284/rss/list" class="iconfont-archer rss" target="_blank" title=rss></a>
+            
+        
+    
+
+    </div>
+    
+    
+        <div class="friends">
+            <div>FRIENDS</div>
+            
+                
+                    <span>
+                        <a href= //www.baidu.com target="_black">friendA</a>
+                    </span>
+                
+            
+                
+                    <span>
+                        <a href= https://blog.csdn.net/qq_42385284 target="_black">CSDN</a>
+                    </span>
+                
+            
+                
+            
+        </div>
+    
+    
+        <div class="about-me">
+            <a href = "/about" >ABOUT ME</a>
+        </div>
+    
+</div>
             
         </div>
         <footer class="footer footer-unloaded">

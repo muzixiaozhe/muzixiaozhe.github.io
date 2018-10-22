@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>深入了解Zookeeper · 哲&#39;s HeroicCollege</title>
+    <title>浅谈MapReduce · 哲&#39;s HeroicCollege</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -227,7 +227,7 @@
                 <a href="/" >哲&#39;s HeroicCollege.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">深入了解Zookeeper</a>
+                <a href="#" class="post-name">浅谈MapReduce</a>
             </div>
     </div>
     
@@ -257,7 +257,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            深入了解Zookeeper
+            浅谈MapReduce
             <!-- 404 -->
             
         </h1>
@@ -276,18 +276,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "zookeeper">zookeeper</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hadoop">hadoop</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2,904</span>阅读时长: <span class="post-count reading-time">10 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">1,308</span>阅读时长: <span class="post-count reading-time">5 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/10/09</span>
+                    <span class="post-intro-time">2018/10/22</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -411,127 +411,40 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>前几天,总结了一下自己使用Zookeeper的经历,搭建过Zookeeper集群,项目中使用过Zookeeper作为Dubbo的注册中心,另外在搭建solrCloud的时候使用了Zookeeper集中管理配置文件、集群管理(选举主从). 但要说Zookeeper到底是什么,想了半天,脑海中只是能简单的浮现出几句话:”1.Zookeeper 是Hadoop 生态系统的一员;2.适合作为Dubbox 服务的注册中心，可用于生产环境;3.构建zookeeper集群服务器最好是奇数台;4.zookeeper可以用来协调集群，公共数据的存放.”可见,我对zookeeper的了解仅仅停留在了表面,所以,我对zookeeper的知识点重新梳理了一下</p>
-<h2 id="ZooKeeper-概述"><a href="#ZooKeeper-概述" class="headerlink" title="ZooKeeper 概述"></a>ZooKeeper 概述</h2><p>Zookeeper 是一个<strong>分布式协调服务的开源框架。 主要用来解决分布式集群中应用系统的一致性问题</strong>，例如怎样避免同时操作同一数据造成脏读的问题。</p>
-<p>ZooKeeper 本质上是一个<strong>分布式的小文件存储系统</strong>。 提供基于类似于文件系统的目录树方式的数据存储，并且可以对树中的节点进行有效管理。从而用来维护和监控你存储的数据的状态变化。通过监控这些数据状态的变化，从而可以达到基于数据的集群管理。 诸如： 统一命名服务(dubbo)、分布式配置管理(solr的配置集中管理)、分布式消息队列（sub/pub）、分布式锁、分布式协调等功能。</p>
-<h2 id="zookeeper的架构图"><a href="#zookeeper的架构图" class="headerlink" title="zookeeper的架构图"></a>zookeeper的架构图</h2><p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539017395040.png" alt="   "></p>
-<h3 id="Leader"><a href="#Leader" class="headerlink" title="Leader:"></a>Leader:</h3><p>Zookeeper 集群工作的核心<br>事务请求（写操作） 的唯一调度和处理者，保证集群事务处理的顺序性；集群内部各个服务器的调度者。<br>对于 create， setData， delete 等有写操作的请求，则需要统一转发给leader 处理， leader 需要决定编号、执行操作，这个过程称为一个事务。</p>
-<h3 id="Follower"><a href="#Follower" class="headerlink" title="Follower:"></a>Follower:</h3><p>处理客户端非事务（读操作） 请求，转发事务请求给 Leader；</p>
-<p>参与集群 Leader 选举投票 2n-1台可以做集群投票。此外，针对访问量比较大的 zookeeper 集群， 还可新增观察者角色。</p>
-<h3 id="Observer"><a href="#Observer" class="headerlink" title="Observer:"></a>Observer:</h3><p>观察者角色，观察 Zookeeper 集群的最新状态变化并将这些状态同步过来，其对于非事务请求可以进行独立处理，对于事务请求，则会转发给 Leader服务器进行处理。<br>不会参与任何形式的投票只提供非事务服务，通常用于在不影响集群事务处理能力的前提下提升集群的非事务处理能力。说白了就是增加并发的读请求</p>
-<h2 id="zookeeper的特性"><a href="#zookeeper的特性" class="headerlink" title="zookeeper的特性"></a>zookeeper的特性</h2><h3 id="1-全局数据一致："><a href="#1-全局数据一致：" class="headerlink" title="1.全局数据一致："></a>1.全局数据一致：</h3><p>每个 server 保存一份相同的数据副本， client 无论连接到哪个 server，展示的数据都是一致的，这是最重要的特征；</p>
-<h3 id="2-可靠性："><a href="#2-可靠性：" class="headerlink" title="2.可靠性："></a>2.可靠性：</h3><p>如果消息被其中一台服务器接受，那么将被所有的服务器接受。</p>
-<h3 id="3-顺序性："><a href="#3-顺序性：" class="headerlink" title="3.顺序性："></a>3.顺序性：</h3><p>包括全局有序和偏序两种：全局有序是指如果在一台服务器上消息 a 在消息 b 前发布，则在所有Server 上消息 a 都将在消息 b 前被发布；偏序是指如果一个消息 b 在消息 a 后被同一个发送者发布， a 必将排在 b 前面。</p>
-<h3 id="4-数据更新原子性："><a href="#4-数据更新原子性：" class="headerlink" title="4.数据更新原子性："></a>4.数据更新原子性：</h3><p>一次数据更新要么成功（半数以上节点成功），要么失败，不存在中间状态；</p>
-<h3 id="5-实时性："><a href="#5-实时性：" class="headerlink" title="5.实时性："></a>5.实时性：</h3><p>Zookeeper 保证客户端将在一个时间间隔范围内获得服务器的更新信息，或者服务器失效的信息。</p>
-<h2 id="zookeeper的数据模型"><a href="#zookeeper的数据模型" class="headerlink" title="zookeeper的数据模型"></a>zookeeper的数据模型</h2><p>ZooKeeper 的数据模型，在结构上和标准文件系统的非常相似，拥有一个层次的命名空间，都是采用树形层次结构，ZooKeeper 树中的每个节点被称为—Znode。和文件系统的目录树一样，ZooKeeper 树中的每个节点可以拥有子节点。但也有不同之处：</p>
-<ol>
-<li>Znode 兼具文件和目录两种特点。既像文件一样维护着数据、元信息、ACL、 时间戳等数据结构，又像目录一样可以作为路径标识的一部分，并可以具有 子 Znode。用户对 Znode 具有增、删、改、查等操作（权限允许的情况下）。</li>
-<li>Znode 具有原子性操作，读操作将获取与节点相关的所有数据，写操作也将 替换掉节点的所有数据。另外，每一个节点都拥有自己的 ACL(访问控制列表)，这个列表规定了用户的权限，即限定了特定用户对目标节点可以执行的操作。</li>
-<li>Znode 存储数据大小有限制。ZooKeeper 虽然可以关联一些数据，但并没有 被设计为常规的数据库或者大数据存储，相反的是，它用来管理调度数据， 比如分布式应用中的配置文件信息、状态信息、汇集位置等等。这些数据的 共同特性就是它们都是很小的数据，通常以 KB 为大小单位。ZooKeeper 的服 务器和客户端都被设计为严格检查并限制每个 Znode 的数据大小至多 1M，常规使用中应该远小于此值。</li>
-<li>Znode 通过路径引用，如同 Unix 中的文件路径。路径必须是绝对的，因此他 们必须由斜杠字符来开头。除此以外，他们必须是唯一的，也就是说每一个 路径只有一个表示，因此这些路径不能改变。在 ZooKeeper 中，路径由 Unicode 字符串组成，并且有一些限制。字符串”/zookeeper”用以保存管理 信息，比如关键配额信息。</li>
-</ol>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p><img src="http://github.com/muzixiaozhe/muzixiaozhe.github.io/raw/master/avatar/images/assets/1539018048802.png" alt="   "></p>
-<p>图中的每个节点称为一个 Znode。 每个 Znode 由 3 部分组成:</p>
-<p>stat：此为状态信息, 描述该 Znode 的版本, 权限等信息</p>
-<p>data：与该 Znode 关联的数据</p>
-<p>children：该 Znode 下的子节点 </p>
-<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><p>Znode 有两种，分别为临时节点和永久节点。</p>
-<p>节点的类型在创建时即被确定，并且不能改变。</p>
-<p>临时节点：该节点的生命周期依赖于创建它们的会话。一旦会话结束，临时 节点将被自动删除，当然可以也可以手动删除。临时节点不允许拥有子节点。</p>
-<p>永久节点：该节点的生命周期不依赖于会话，并且只有在客户端显示执行删除操作的时候，他们才能被删除。</p>
-<p>Znode 还有一个序列化的特性，如果创建的时候指定的话，该 Znode 的名字后面会自动追加一个不断增加的序列号。序列号对于此节点的父节点来说是唯一的，这样便会记录每个子节点创建的先后顺序。它的格式为“%10d”(10 位数字，没有数值的数位用 0 补充，例如“0000000001”)。</p>
-<p>这样便会存在四种类型的 Znode 节点，分别对应：</p>
-<p> PERSISTENT：永久节点</p>
-<p> EPHEMERAL：临时节点</p>
-<p> PERSISTENT_SEQUENTIAL：永久节点、序列化</p>
-<p> EPHEMERAL_SEQUENTIAL：临时节点、序列化</p>
-<h3 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h3><p><strong>每个 znode 都包含了一系列的属性</strong></p>
-<p>dataVersion：数据版本号，每次对节点进行 set 操作，dataVersion 的值都会增加 1（即使设置的是相同的数据），可有效避免了数据更新时出现的先后顺序问题。</p>
-<p>cversion ：子节点的版本号。当 znode 的子节点有变化时，cversion 的值就会增加 1。</p>
-<p>aclVersion ：ACL 的版本号。</p>
-<p>cZxid ：Znode 创建的事务 id。</p>
-<p>mZxid    ：Znode 被修改的事务 id，即每次对 znode 的修改都会更新 mZxid。</p>
-<p>对于 zk 来说，每次的变化都会产生一个唯一的事务 id，zxid（ZooKeeper Transaction Id）。通过 zxid，可以确定更新操作的先后顺序。例如，如果 zxid1小于 zxid2，说明 zxid1 操作先于 zxid2 发生，zxid 对于整个 zk 都是唯一的，即使操作的是不同的 znode。</p>
-<p>ctime：节点创建时的时间戳.</p>
-<p>mtime：节点最新一次更新发生时的时间戳.</p>
-<p>ephemeralOwner: 如果该节点为临时节点, ephemeralOwner 值表示与该节点绑定的 session id. 如果不是,ephemeralOwner 值为 0.</p>
-<p>在 client 和 server 通信之前,首先需要建立连接,该连接称为 session。连接建立后,如果发生连接超时、授权失败,或者显式关闭连接,连接便处于 CLOSED状态, 此时 session 结束。</p>
-<h2 id="zookeeper的watch机制"><a href="#zookeeper的watch机制" class="headerlink" title="zookeeper的watch机制"></a>zookeeper的watch机制</h2><p>ZooKeeper 提供了分布式数据发布/订阅功能，一个典型的发布/订阅模型系统定义了一种一对多的订阅关系，能让多个订阅者同时监听某一个主题对象，当这个主题对象自身状态变化时，会通知所有订阅者，使他们能够做出相应的处理。ZooKeeper 中，引入了 Watcher 机制来实现这种分布式的通知功能 。ZooKeeper 允许客户端向服务端注册一个 Watcher 监听，当服务端的一些事件触发了这个 Watcher，那么就会向指定客户端发送一个事件通知来实现分布式的通知功能。</p>
-<p>触发事件种类很多，如：节点创建，节点删除，节点改变，子节点改变等。</p>
-<p>总的来说可以概括 Watcher 为以下三个过程：客户端向服务端注册 Watcher、服务端事件发生触发 Watcher、客户端回调 Watcher 得到触发事件情况</p>
-<h3 id="watch机制特点"><a href="#watch机制特点" class="headerlink" title="watch机制特点"></a>watch机制特点</h3><p><strong>一次性触发</strong></p>
-<p>事件发生触发监听，一个 watcher event 就会被发送到设置监听的客户端，这种效果是一次性的，后续再次发生同样的事件，不会再次触发。</p>
-<p><strong>事件封装</strong></p>
-<p>ZooKeeper 使用 WatchedEvent 对象来封装服务端事件并传递。</p>
-<p>WatchedEvent 包含了每一个事件的三个基本属性：</p>
-<p>​    通知状态（keeperState），事件类型（EventType）和节点路径（path）</p>
-<p><strong>event 异步发送</strong></p>
-<p>watcher 的通知事件从服务端发送到客户端是异步的。</p>
-<p><strong>先注册再触发</strong></p>
-<p>Zookeeper 中的 watch 机制，必须客户端先去服务端注册监听，这样事件发送才会触发监听，通知给客户端。</p>
-<h3 id="通知状态和事件类型"><a href="#通知状态和事件类型" class="headerlink" title="通知状态和事件类型"></a>通知状态和事件类型</h3><p>同一个事件类型在不同的通知状态中代表的含义有所不同，下表列举了常见的通知状态和事件类型。</p>
-<table>
-<thead>
-<tr>
-<th>KeeperState</th>
-<th>EventType</th>
-<th>触发条件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>None   （-1）</td>
-<td>客户端与服务端成功建立连接</td>
-<td></td>
-</tr>
-<tr>
-<td>SyncConnected   （0）</td>
-<td>NodeCreated   （1）</td>
-<td>Watcher 监听的对应数据节点被创建</td>
-<td></td>
-</tr>
-<tr>
-<td>NodeDeleted   （2）</td>
-<td>Watcher 监听的对应数据节点被删除</td>
-<td>此时客户端和服务器处于连接状态</td>
-<td></td>
-</tr>
-<tr>
-<td>NodeDataChanged   （3）</td>
-<td>Watcher 监听的对应数据节点的数据内容   发生变更</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>NodeChildChanged   （4）</td>
-<td>Wather 监听的对应节点的子节点数据列表发生变更</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Disconnected   （0）</td>
-<td>None   （-1）</td>
-<td>客户端与zookeeper服务器断开连接</td>
-<td>此时客户端和服务器处于断开连接状态</td>
-</tr>
-<tr>
-<td>Expired   （-112）</td>
-<td>Node   （-1）</td>
-<td>会话超时</td>
-<td>此时客户端会话失效，通常同时也会收到SessionExpiredException 异常</td>
-</tr>
-<tr>
-<td>AuthFailed   （4）</td>
-<td>None   （-1）</td>
-<td>通常有两种情况   1：使用错误的   schema 进行权限检查   2：SASL 权限检查失败</td>
-<td>通常同时也会收到AuthFailedException 异常</td>
-</tr>
-</tbody>
-</table>
-<p>其中连接状态事件(type=None, path=null)不需要客户端注册，客户端只要有需要直接处理就行了。</p>
+        <h3 id="MapReduce的原理"><a href="#MapReduce的原理" class="headerlink" title="MapReduce的原理"></a>MapReduce的原理</h3><p>MapReduce是一个分布式计算模型,解决海量数据的计算问题</p>
+<p>将整个并行计算过程抽象成两个函数map()和reduce()用户只需要实现map()和reduce()函数即可实现分布式计算</p>
+<p>MapReduce的核心思想是分治</p>
+<p>map负责分,将一个大的任务分成若干个简单的小任务并行处理,前提是这些小文件可以并行计算,并且之间几乎没有依赖关系</p>
+<p>reduce负责合,将map处理的数据进行汇总</p>
+<h3 id="MapReduce的八个执行步骤"><a href="#MapReduce的八个执行步骤" class="headerlink" title="MapReduce的八个执行步骤"></a>MapReduce的八个执行步骤</h3><p>第一步:读取文件解析成key,value对</p>
+<p>第二步:自定义map逻辑将第一步的k1v1转换成k2v2</p>
+<p>第三步:分区将相同key的value分到一个reduce中形成一个集合默认使用hash分区</p>
+<p>第四步:排序对我们的数据进行字典顺序的排列</p>
+<p>第五步:规约将我们的数据在map端进行一次聚合,减少输出的数据量</p>
+<p>第六步:分组将相同的数据分到同一组里面去调用一次reduce逻辑</p>
+<p>第七步:自定义reduce逻辑接收k2v2转换成k3v3输出</p>
+<p>第八步:输出将我们reduce处理完成的数据进行输出</p>
+<h3 id="MapReduce框架结构"><a href="#MapReduce框架结构" class="headerlink" title="MapReduce框架结构"></a>MapReduce框架结构</h3><p>MRAppMaster:负责整个程序的过程调度以及状态协调</p>
+<p>MapTask:负责map阶段的数据处理流程</p>
+<p>ReduceTask:负责reduce阶段的数据处理流程</p>
+<h3 id="MapReduce总运行流程"><a href="#MapReduce总运行流程" class="headerlink" title="MapReduce总运行流程"></a>MapReduce总运行流程</h3><p>一个mr程序启动的时候,首先会启动MRAppmaster,mrappmaster会根据本次的job的详情信息,计算出所需要的maptask的个数,并向集群中申请启动相应数量的maptask进程</p>
+<p>maptask进程启动后会根据设置的数据分片的大小进行数据处理</p>
+<p>mrappmaster监控到所有的maptask任务结束后,会根据用户给定的参数启动相应的reducetask进程,并告知reducetask进程要处理的数据范围</p>
+<p>reducetask进程启动后会根据mrappmaster告知的待处理数据所在位置,去启动了maptask进程的机器上获取maptask输出结果文件,并在本地进行重新归并排序,然后按照相同key为一个组,根据用户设置的reduce()方法进行逻辑运算并调用指定的outputformat将结果数据输出到外部存储</p>
+<h3 id="combiner与partition的作用"><a href="#combiner与partition的作用" class="headerlink" title="combiner与partition的作用"></a>combiner与partition的作用</h3><p>combiner的作用是map端的reduce聚合</p>
+<p>partition的作用是分区,知道key到哪个reduce</p>
+<p>其中MapReduce中map输出的数据会根据不同的key输入到不同的reduce,就是通过partition,在缺省的情况下默认是HashPartitioner,他通过对key区hash值,然后对reduce的数据取模,就可以判断该key以及对应的valuelist应该去哪个reduce上进行处理</p>
+<h3 id="MapTask运行机制以及Map任务的并行度"><a href="#MapTask运行机制以及Map任务的并行度" class="headerlink" title="MapTask运行机制以及Map任务的并行度"></a>MapTask运行机制以及Map任务的并行度</h3><p>input file会通过split进行逻辑切分成一个个split文件,通过record按行读取内容给用户自定义的map逻辑进行处理,处理过的数据交给outputcollector收集器,然后进行分区(默认使用hash分区),然后写入buffer,每个maptask都有一个内存缓冲区(环形缓冲区)存储map的输出结果,当内存缓冲区快满的时候会将缓冲区的数据以临时文件的方式存放到磁盘(这个过程被称为spill,也就是溢写),当整个maptask结束后再对磁盘中这个maptask产生的所有临时文件做合并,生成最终的正式输出文件,然后等待reducetask来拉数据</p>
+<p>缓冲区的作用是批量收集map结果,减少磁盘IO的影响,它其实是一个数组,有大小限制默认是100MB</p>
+<h3 id="ReduceTask工作机制以及并行度"><a href="#ReduceTask工作机制以及并行度" class="headerlink" title="ReduceTask工作机制以及并行度"></a>ReduceTask工作机制以及并行度</h3><p>reduce进程开启多个数据copy线程通过http方式请求maptask获取属于自己的文件,然后会启动两个merge线程对内存到本地的数据文件进行合并操作,在合并的同会进行排序操作最后调用用户自定义的reduce函数进行处理.</p>
+<h3 id="MapReduceshuffle过程"><a href="#MapReduceshuffle过程" class="headerlink" title="MapReduceshuffle过程"></a>MapReduceshuffle过程</h3><p>collect阶段,将maptask的结果输入到环形缓冲区中,保存的是key/value.partition分区信息等.</p>
+<p>spill阶段:当内存中的数据达到阈值的时候会将数据写入本地磁盘</p>
+<p>merge阶段:吧所有溢出的临时文件进行一次合并操作,保证一个maptask最终只产生一个中间数据文件</p>
+<p>copy阶段:reducetask启动Fetcher线程到maptask中获取属于自己的数据,这些数据会默认保存在内存缓存区中,当内存缓冲区的数据达到一定的阈值,就会将数据写入到磁盘上</p>
+<p>merge阶段,在reducetask复制数据的同时,会在后台启动两个线程对内存到本地的数据文件进行合并操作</p>
+<p>sort阶段,在对数据合并的同时会进行排序操作</p>
+<p>shuffle中的缓冲区大小会影响到MapReduce程序的执行效率,原则上说,缓冲区越大,磁盘IO的次数越少,执行效率就越快</p>
+<p>缓冲区大小可根据参数:MapReduce.task.io.sort.mb设置,默认为100M</p>
 
     </article>
     <!-- license  -->
@@ -540,17 +453,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/10/09/使用VMware启动虚拟机无法打开vmx文件解决办法/" title= "使用VMware启动虚拟机无法打开vmx文件解决办法">
-                    <div class="nextTitle">使用VMware启动虚拟机无法打开vmx文件解决办法</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2018/10/07/使用redis实现分布式锁/" title= "使用redis实现分布式锁">
-                    <div class="prevTitle">使用redis实现分布式锁</div>
+                <a href= "/2018/10/18/Hive的调优/" title= "Hive性能调优">
+                    <div class="prevTitle">Hive性能调优</div>
                 </a>
             
         </li>
@@ -671,7 +579,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-概述"><span class="toc-number">1.</span> <span class="toc-text">ZooKeeper 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的架构图"><span class="toc-number">2.</span> <span class="toc-text">zookeeper的架构图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Leader"><span class="toc-number">2.1.</span> <span class="toc-text">Leader:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Follower"><span class="toc-number">2.2.</span> <span class="toc-text">Follower:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Observer"><span class="toc-number">2.3.</span> <span class="toc-text">Observer:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的特性"><span class="toc-number">3.</span> <span class="toc-text">zookeeper的特性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局数据一致："><span class="toc-number">3.1.</span> <span class="toc-text">1.全局数据一致：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-可靠性："><span class="toc-number">3.2.</span> <span class="toc-text">2.可靠性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-顺序性："><span class="toc-number">3.3.</span> <span class="toc-text">3.顺序性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-数据更新原子性："><span class="toc-number">3.4.</span> <span class="toc-text">4.数据更新原子性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-实时性："><span class="toc-number">3.5.</span> <span class="toc-text">5.实时性：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的数据模型"><span class="toc-number">4.</span> <span class="toc-text">zookeeper的数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构"><span class="toc-number">4.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点类型"><span class="toc-number">4.2.</span> <span class="toc-text">节点类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点属性"><span class="toc-number">4.3.</span> <span class="toc-text">节点属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zookeeper的watch机制"><span class="toc-number">5.</span> <span class="toc-text">zookeeper的watch机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#watch机制特点"><span class="toc-number">5.1.</span> <span class="toc-text">watch机制特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通知状态和事件类型"><span class="toc-number">5.2.</span> <span class="toc-text">通知状态和事件类型</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MapReduce的原理"><span class="toc-number">1.</span> <span class="toc-text">MapReduce的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapReduce的八个执行步骤"><span class="toc-number">2.</span> <span class="toc-text">MapReduce的八个执行步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapReduce框架结构"><span class="toc-number">3.</span> <span class="toc-text">MapReduce框架结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapReduce总运行流程"><span class="toc-number">4.</span> <span class="toc-text">MapReduce总运行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#combiner与partition的作用"><span class="toc-number">5.</span> <span class="toc-text">combiner与partition的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapTask运行机制以及Map任务的并行度"><span class="toc-number">6.</span> <span class="toc-text">MapTask运行机制以及Map任务的并行度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReduceTask工作机制以及并行度"><span class="toc-number">7.</span> <span class="toc-text">ReduceTask工作机制以及并行度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MapReduceshuffle过程"><span class="toc-number">8.</span> <span class="toc-text">MapReduceshuffle过程</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
@@ -804,9 +712,45 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 10
+        Total : 12
         </div>
         <!-- search  -->
         
@@ -816,6 +760,20 @@ top:50vh;
     
     
     
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/10/18/Hive的调优/" >Hive性能调优</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
     
     <div class="archive-year"> Invalid date </div>
     <ul class="year-list">
@@ -845,22 +803,13 @@ top:50vh;
     
         </ul>
     
-    <div class="archive-year"> Invalid date </div>
+    <div class="archive-year"> 2018 </div>
     <ul class="year-list">
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
+            <span class="archive-post-date">10/22</span><a class="archive-post-title" href= "/2018/10/22/浅谈MapReduce/" >浅谈MapReduce</a>
         </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2018 </div>
-    <ul class="year-list">
     
     
         <li class="archive-post-item">
@@ -874,7 +823,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2018/10/09/深入了解Zookeeper/" >深入了解Zookeeper</a>
+            <span class="archive-post-date">10/09</span><a class="archive-post-title" href= "/2018/10/09/浅谈Zookeeper/" >深入了解Zookeeper</a>
         </li>
     
     
@@ -897,6 +846,20 @@ top:50vh;
             <span class="archive-post-date">08/26</span><a class="archive-post-title" href= "/2018/08/26/简介/" >测试</a>
         </li>
     
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/09/30/sqlNosql对比/" >对比SQL和NOSQL</a>
+        </li>
+    
     </div>
   </div>
         <div class="sidebar-panel-tags">
@@ -912,21 +875,23 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="linux"><span class="iconfont-archer">&#xe606;</span>linux</span>
     
-        <span class="sidebar-tag-name" data-tags="Solr"><span class="iconfont-archer">&#xe606;</span>Solr</span>
-    
-        <span class="sidebar-tag-name" data-tags="SolrCloud"><span class="iconfont-archer">&#xe606;</span>SolrCloud</span>
-    
-        <span class="sidebar-tag-name" data-tags="Zookeeper"><span class="iconfont-archer">&#xe606;</span>Zookeeper</span>
+        <span class="sidebar-tag-name" data-tags="hive"><span class="iconfont-archer">&#xe606;</span>hive</span>
     
         <span class="sidebar-tag-name" data-tags="Redis"><span class="iconfont-archer">&#xe606;</span>Redis</span>
     
         <span class="sidebar-tag-name" data-tags="NoSql"><span class="iconfont-archer">&#xe606;</span>NoSql</span>
     
+        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
+    
         <span class="sidebar-tag-name" data-tags="redis"><span class="iconfont-archer">&#xe606;</span>redis</span>
     
         <span class="sidebar-tag-name" data-tags="分布式锁"><span class="iconfont-archer">&#xe606;</span>分布式锁</span>
     
-        <span class="sidebar-tag-name" data-tags="zookeeper"><span class="iconfont-archer">&#xe606;</span>zookeeper</span>
+        <span class="sidebar-tag-name" data-tags="Solr"><span class="iconfont-archer">&#xe606;</span>Solr</span>
+    
+        <span class="sidebar-tag-name" data-tags="SolrCloud"><span class="iconfont-archer">&#xe606;</span>SolrCloud</span>
+    
+        <span class="sidebar-tag-name" data-tags="Zookeeper"><span class="iconfont-archer">&#xe606;</span>Zookeeper</span>
     
         <span class="sidebar-tag-name" data-tags="多线程"><span class="iconfont-archer">&#xe606;</span>多线程</span>
     
